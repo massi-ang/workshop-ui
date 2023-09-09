@@ -16,7 +16,7 @@ import Task from "./components/task";
 
 export default function Home() {
   const [alert, setAlert] = useState("");
-  const serialTermRef = useRef();
+  const serialTermRef = useRef<any>();
 
   const sendToTerminal = (m: string) => {
     serialTermRef.current?.writeToPort(`${m}\r\n`);

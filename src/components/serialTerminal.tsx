@@ -1,12 +1,10 @@
 import {
   Container,
   SpaceBetween,
-  Button,
 } from "@cloudscape-design/components";
 import ConnectSerialPort from "./configuration";
 
 import { FitAddon } from "xterm-addon-fit";
-//import { WebLinksAddon } from "xterm-addon-web-links";
 import "xterm/css/xterm.css";
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import Xterm from "./xterm-react";
@@ -14,9 +12,9 @@ import Xterm from "./xterm-react";
 const BUFFER_SIZE = 8 * 1024;
 
 export const SerialTerminal = forwardRef(({ alert }: { alert: (m: string) => void }, ref) => {
-  const myTermRef = useRef(null);
+  const myTermRef = useRef<any>(null);
   const port = useRef<SerialPort | null>(null);
-  const [flushOnEnter, setFlushOnEnter] = useState(false);
+  const [flushOnEnter] = useState(false);
   const encoder = new TextEncoder();
   const [connected, setConnected] = useState(false);
   let reader:
